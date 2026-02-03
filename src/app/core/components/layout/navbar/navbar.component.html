@@ -25,7 +25,10 @@
         </li>
 }
 @else {
-       *
+        <li>
+          <a (click)="authService.logout()" class="cursor-pointer block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0"
+            aria-current="page">logout</a>
+        </li>
 }
 
       </ul>
