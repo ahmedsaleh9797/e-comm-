@@ -1,7 +1,7 @@
 import { LoginComponent } from './../../components/auth/login/login.component';
 import { HttpClient } from '@angular/common/http';
 import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { logInData, signUpData } from '../../../shared/models/data';
+import { forgetPasswordData, logInData, resetCodeData,  resetNewPasswordData,  signUpData,  } from '../../../shared/models/data';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {  enviroment } from '../../../../enviroment/enviroment';
 import { jwtDecode, JwtPayload } from "jwt-decode";
@@ -57,11 +57,26 @@ this.userdata.next(null);
 this.router.navigate(['login']);
 
 }
+forgetPassword(data:forgetPasswordData):Observable<any>
+{
+return this.httpClint.post(`${enviroment.baseUrl}/api/v1/auth/forgotPasswords`,data)
 
+
+
+}
+verifyResetCode(data:resetCodeData):Observable<any>{
+
+return this.httpClint.post(`${enviroment.baseUrl}/api/v1/auth/verifyResetCode`,data)
+
+
+}
+resetNewPassword(data:resetNewPasswordData):Observable<any>{
+
+return this.httpClint.put(`${enviroment.baseUrl}/api/v1/auth/resetPassword`,data)
 
 
 }
   
   
 
-
+}

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
-  imports: [ReactiveFormsModule],
+  imports: [],
   templateUrl:  './not-found.component.html',
   styleUrl: './not-found.component.scss',
 })

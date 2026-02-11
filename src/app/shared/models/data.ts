@@ -1,14 +1,37 @@
-export interface signUpData extends logInData{
-name:string;
-rePassword:string;
-phone:string;
+export interface signUpData extends logInData {
+    name: string;
+    rePassword: string;
+    phone: string;
 
 
 }
-export interface logInData{
+export interface logInData extends forgetPasswordData {
 
-email:string;
-password:string;
+
+    password: string;
 
 
 }
+export interface forgetPasswordData {
+    email: string;
+
+
+
+
+}
+export interface resetCodeData {
+
+    resetCode: string
+
+
+
+}
+export interface resetNewPasswordData extends forgetPasswordData {
+
+
+    newPassword: string
+
+}
+
+
+
