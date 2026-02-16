@@ -1,22 +1,21 @@
 <section
     class="mt-12 mb-5 flex justify-between flex-col items-center bg-neutral-primary-soft   shadow-xs md:flex-row md:flex-row ">
     <img class="object-cover md:w-1/4 rounded-base  mb-4 md:mb-0"
-        [src]="product().imageCover" [alt]="product().title">
+        [src]="products().imageCover" [alt]="products().title">
     <div class="flex md:w-3/4 flex-col justify-between md:p-4 leading-normal">
-        <h1 class="mb-2 text-xl font-bold tracking-tight text-heading">{{product().title}}</h1>
-        <p class="mb-6 text-body">{{product().description}}</p>
-        <span class="mb-3 text-sm text-green-700">{{product().category.name}}</span>
+        <p>{{date |date}}</p>
+        <h1 class="mb-2 text-xl font-bold tracking-tight text-heading">{{products().title|onsale}}</h1>
+        <p class="mb-6 text-body">{{products().description}}</p>
+        <span class="mb-3 text-sm text-green-700">{{products().category.name |titlecase}}</span>
         <div class="flex justify-between items-center mb-3">
-            <span>{{product().price}}EGP</span>
-            <span ><i class="fa fa-star text-yellow-300 me-4">{{product().ratingsAverage}}</i></span>
+            <span>{{products().price |currency}}EGP</span>
+            <span ><i class="fa fa-star text-yellow-300 me-4">{{products().ratingsAverage}}</i></span>
 
 
         </div>
 
 
         <div>
-          <button class="rounded text-white w-full bg-green-700 py-1">+ Add To Cart</button>
-       
-    </div>
-
+          <button (click)="addProductToCart(products()._id)"  class="rounded text-white w-full bg-green-700 py-1">+ Add To Cart</button>
+</div>
     <section>

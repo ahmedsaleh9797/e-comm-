@@ -1,7 +1,8 @@
 @if(product()){
- <div [routerLink]="['/productdetails',product()._id]" class="bg-neutral-primary-soft cursor-pointer group block overflow-hidden  p-3 pb-0 border border-default rounded-base shadow-xs">
+ <div  class="bg-neutral-primary-soft cursor-pointer group block overflow-hidden  p-3 pb-0 border border-default rounded-base shadow-xs">
 
-        <img class="rounded-base" [src]="product().imageCover" [alt]="product().title" />
+      <div [routerLink]="['/productdetails',product()._id]" >
+          <img class="rounded-base" [src]="product().imageCover" [alt]="product().title" />
 
 
 
@@ -22,8 +23,9 @@
             
 
         </div>
+      </div>
 
-        <button class="bg-green-700 group-hover:translate-y-0 duration-1000 translate-y-full rounded text-white w-full py-1 ">Add To Cart</button>
+        <button (click)="addProductToCart(product()._id)" class="bg-green-700 group-hover:translate-y-0 duration-1000 translate-y-full rounded text-white w-full py-1 ">Add To Cart</button>
 
     </div>
 }
