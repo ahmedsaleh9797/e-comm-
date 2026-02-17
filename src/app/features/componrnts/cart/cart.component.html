@@ -7,7 +7,7 @@
         <h1 class="text-xl font-semibold  text-heading">Shop Cart</h1>
         <p class="text-base my-1 font-medium   text-green-700">Total Cart Price : {{cartData(). totalCartPrice}}EGP</p>
         </div>
-        <button  class="btn-main">Clear All</button>
+        <button (click)="clearUserCart()"  class="btn-main">Clear All</button>
    </div>
    <div class="flow-root">
         <ul role="list" class="divide-y divide-default">
@@ -24,12 +24,12 @@
                         <p class="text-sm my-1 text-body text-green-700 truncate">
                       price : {{item.price}}
                         </p>
-                         <button class="cursor-pointer"><i class="fas fa-trash text-green-700"></i>Remove</button>
+                         <button (click)="removeSpecificProductFromCard(item.product._id)" class="cursor-pointer"><i class="fas fa-trash text-green-700"></i>Remove</button>
                     </div>
                     <div class="inline-flex items-center font-medium text-heading">
-              <button class="bg-green-700 text-white cursor-pointer px-2 py-1 rounded">+</button>
+              <button (click)="updateProductCardCount(item.product._id,item.count = item.count+1)" class="bg-green-700 text-white cursor-pointer px-2 py-1 rounded">+</button>
               <span class="px-2">{{item.count}}</span> 
-              <button class="bg-red-700 text-white cursor-pointer px-2 py-1 rounded">-</button>
+              <button (click)="updateProductCardCount(item.product._id,item.count = item.count-1)" class="bg-red-700 text-white cursor-pointer px-2 py-1 rounded">-</button>
                     </div>
                 </div>
             </li>

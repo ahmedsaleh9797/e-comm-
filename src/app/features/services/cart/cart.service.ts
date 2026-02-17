@@ -46,5 +46,61 @@ token : localStorage.getItem('userToken') || ''
 
  
 }
+updateProductCartCount(productId:string,count:string):Observable<CartResponse>
+{
+
+return this.httpClient.put<CartResponse>(`${enviroment.baseUrl}/api/v1/cart/${productId}`,
+  {
+count 
+
+
+},
+{
+headers: {
+token : localStorage.getItem('userToken') || ''
+
+
+}
+
+
+})
+
+ 
+}
+removeSpecificProductFromCart(productId:string,):Observable<CartResponse>
+{
+
+return this.httpClient.delete<CartResponse>(`${enviroment.baseUrl}/api/v1/cart/${productId}`,
+ 
+{
+headers: {
+token : localStorage.getItem('userToken') || ''
+
+
+}
+
+
+})
+
+ 
+}
+clearUserCart(): Observable<any>
+{
+return this.httpClient.delete(`${enviroment.baseUrl}/api/v1/cart`, {
+
+headers : {
+token : localStorage.getItem('userToken') || ''
+
+
+
+}
+
+
+
+})
+
+
+
+}
   
 }
