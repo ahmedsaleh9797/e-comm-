@@ -9,6 +9,7 @@ import { LoginComponent } from './core/components/auth/login/login.component';
 import { authGuard } from './core/guards/auth/auth-guard';
 import { ForgetpasswordComponent } from './core/components/auth/forgetpassword/forgetpassword.component';
 import { ProductdetailsComponent } from './features/componrnts/productdetails/productdetails.component';
+import { CategorydetailsComponent } from './features/componrnts/categorydetails/categorydetails/categorydetails.component';
 
 export const routes: Routes = [  
     {path:'',redirectTo:'home', pathMatch:'full'}, 

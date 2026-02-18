@@ -3,14 +3,39 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, OnInit } from '@angular/core';
 import { enviroment } from '../../../../enviroment/enviroment';
 import { Observable } from 'rxjs';
+import { CheckPlateformService } from '../../../shared/services/checkPlateform/check-plateform.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService  {
+  checkPlateformService : CheckPlateformService = inject(CheckPlateformService);
+  noOfCartItem : Number = 0 ;
  httpClient: HttpClient = inject(HttpClient);
+constructor(){
+if(this.checkPlateformService.checkIsPlateformBrowser()){
+this.gerLoggedUserCart().subscribe({
+next : res => {
+this.noOfCartItem = res.numOfCartItems ;
+console.log(this.noOfCartItem);
 
+
+
+}
+
+
+})
+
+
+
+
+}
+
+
+
+
+}
  
 addProductToCart(productId:string):Observable<any>
 {
