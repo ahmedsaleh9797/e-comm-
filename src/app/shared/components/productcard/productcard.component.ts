@@ -26,7 +26,7 @@ progressBar:true
 
  });
 
-
+this.cartService.noOfCartItem.next(res.numOfCartItems)
 
 
 })

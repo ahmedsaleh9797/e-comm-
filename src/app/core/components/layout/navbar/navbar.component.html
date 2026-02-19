@@ -13,29 +13,45 @@
           <a href="#" class="px-1"><i class="fa-brands fa-instagram"></i></a>
           <a href="#" class="px-1"><i class="fa-brands fa-linkedin"></i></a>
         </li>
-@if(!isLogin){
- <li>
+        <li>
+          <button (click)="myTranslateService.changeLang('ar')"
+            class="cursor-pointer block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0" aria-current="page">{{'navbar.AR'
+            |translate}}</button>
+        </li>
+        <li>
+          <button (click)="myTranslateService.changeLang('en') "
+            class="cursor-pointer block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0" aria-current="page">{{'navbar.EN'
+            |translate}}</button>
+        </li>
+
+        @if(!isLogin){
+        <li>
           <a routerLink="register" routerLinkActive="text-green-600"
-           class="block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0"
-            aria-current="page">register</a>
+            class="block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0" aria-current="page">{{"navbar.register"
+            | translate}}</a>
         </li>
         <li>
           <a routerLink="login" routerLinkActive="text-green-600"
-           class="block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0" aria-current="page">login</a>
+            class="block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0" aria-current="page">{{'navbar.login'
+            |translate}}</a>
         </li>
-}
-@else {
-  
-<button type="button" class="relative text-white bg-green-700 box-border border border-transparent hover:bg-green-900 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm p-3 focus:outline-none">
- <i class="fas fa-cart-shopping"></i>
-  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger border-2 border-buffer rounded-full -top-2 -end-2">20</div>
-</button>
+        }
+        @else {
+
+        <button type="button"
+          class="relative text-white bg-green-700 box-border border border-transparent hover:bg-green-900 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm p-3 focus:outline-none">
+          <i class="fas fa-cart-shopping"></i>
+          <div
+            class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger border-2 border-buffer rounded-full -top-2 -end-2">
+            {{cartItem()}}</div>
+        </button>
 
         <li>
-          <a (click)="authService.logout()" class="cursor-pointer block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0"
-            aria-current="page">logout</a>
+          <a (click)="authService.logout()"
+            class="cursor-pointer block px-[3px] md:py-2 md:px-3 text-black  rounded   md:p-0"
+            aria-current="page">{{'navbar.logout' |translate}}</a>
         </li>
-}
+        }
 
       </ul>
 
@@ -53,31 +69,29 @@
       <ul
         class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
         <li>
-          <a    routerLink="home" routerLinkActive="text-green-600"
-           class="block py-2 px-3 text-black  rounded  md:p-0" aria-current="page">Home</a>
-        </li> 
+          <a routerLink="home" routerLinkActive="text-green-600" class="block py-2 px-3 text-black  rounded  md:p-0"
+            aria-current="page">{{'navbar.Home' |translate}}</a>
+        </li>
         @if(isLogin){
 
         <li>
-          <a routerLink="cart" routerLinkActive="text-green-600"
-           class="block py-2 px-3 text-black rounded   md:p-0" aria-current="page">cart</a>
+          <a routerLink="cart" routerLinkActive="text-green-600" class="block py-2 px-3 text-black rounded   md:p-0"
+            aria-current="page">{{'navbar.cart' |translate}}</a>
         </li>
-}
+        }
 
         <li>
-          <a    routerLink="products" routerLinkActive="text-green-600"
-           class="block py-2 px-3 text-black  rounded  md:p-0"
-            aria-current="page">products</a>
+          <a routerLink="products" routerLinkActive="text-green-600" class="block py-2 px-3 text-black  rounded  md:p-0"
+            aria-current="page">{{'navbar.products' |translate}}</a>
         </li>
         <li>
-          <a    routerLink="categories" routerLinkActive="text-green-600"
-           class="block py-2 px-3 text-black  rounded   md:p-0"
-            aria-current="page">catigories</a>
+          <a routerLink="categories" routerLinkActive="text-green-600"
+            class="block py-2 px-3 text-black  rounded   md:p-0" aria-current="page">{{'navbar.catigories'
+            |translate}}</a>
         </li>
         <li>
-          <a  routerLink="brands" routerLinkActive="text-green-600"
-           class="block py-2 px-3 text-black  rounded  md:p-0"
-            aria-current="page">brands</a>
+          <a routerLink="brands" routerLinkActive="text-green-600" class="block py-2 px-3 text-black  rounded  md:p-0"
+            aria-current="page">{{'navbar.brands' |translate}}</a>
         </li>
 
       </ul>

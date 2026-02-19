@@ -39,7 +39,7 @@ next : res => {
 
 this.cartData.set(res.data)
 console.log(res);
-
+this.cartService.noOfCartItem.next(res.numOfCartItems)
 }
 
 })
@@ -52,7 +52,7 @@ this.cartService.removeSpecificProductFromCart(productId).subscribe({
 next : res => {
   this.cartData.set(res.data)
 console.log(res);
-
+this.cartService.noOfCartItem.next(res.numOfCartItems)
 
 }
 
@@ -69,7 +69,7 @@ next : res => {
 
 this.getLoggedUserCart();
 console.log(res);
-
+this.cartService.noOfCartItem.next(0)
 }
 
 

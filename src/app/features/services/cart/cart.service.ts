@@ -2,7 +2,7 @@ import { CartResponse } from './../../../shared/models/ICart';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, OnInit } from '@angular/core';
 import { enviroment } from '../../../../enviroment/enviroment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CheckPlateformService } from '../../../shared/services/checkPlateform/check-plateform.service';
 
 
@@ -11,14 +11,14 @@ import { CheckPlateformService } from '../../../shared/services/checkPlateform/c
 })
 export class CartService  {
   checkPlateformService : CheckPlateformService = inject(CheckPlateformService);
-  noOfCartItem : Number = 0 ;
+  noOfCartItem : BehaviorSubject<number> = new BehaviorSubject<number>(0) ;
  httpClient: HttpClient = inject(HttpClient);
 constructor(){
 if(this.checkPlateformService.checkIsPlateformBrowser()){
 this.gerLoggedUserCart().subscribe({
 next : res => {
-this.noOfCartItem = res.numOfCartItems ;
-console.log(this.noOfCartItem);
+this.noOfCartItem.next(res.numOfCartItems) ;
+console.log(this.noOfCartItem.getValue());
 
 
 

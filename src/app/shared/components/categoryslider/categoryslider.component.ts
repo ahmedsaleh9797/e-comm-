@@ -15,6 +15,7 @@ export class CategorysliderComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
+    rtl : true ,
     navText: ['', ''],
     responsive: {
       0: {
