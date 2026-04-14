@@ -1,0 +1,6 @@
+
+<div class="px-2 p-0 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+@if (control.errors && (control.touched || formDirective.submitted)) {
+  {{ errorMessages | validation : control.errors }}
+}
+</div>

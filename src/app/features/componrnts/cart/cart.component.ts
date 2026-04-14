@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { CartData, } from '../../../shared/models/ICart';
 import { CartService } from '../../services/cart/cart.service';
-import { CartData,  } from '../../../shared/models/ICart';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +11,7 @@ import { CartData,  } from '../../../shared/models/ICart';
 export class CartComponent implements OnInit {
   cartData : WritableSignal<CartData> = signal<CartData>({} as CartData)
 cartService : CartService = inject(CartService);
+
 
 ngOnInit(): void {
   this.getLoggedUserCart()
@@ -39,7 +40,7 @@ next : res => {
 
 this.cartData.set(res.data)
 console.log(res);
-this.cartService.noOfCartItem.next(res.numOfCartItems)
+
 }
 
 })

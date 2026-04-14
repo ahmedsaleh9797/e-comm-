@@ -1,23 +1,21 @@
 {
-
-"navbar":{
-
-
-"Home" : "الرئيسية",
-"cart" : "السله",
-"products" : "المنتجات",
-"catigories" : "تصنيفات",
-"brands" :  "براندات" ,
-"logout" :   "تسجيل خروج" , 
-"login" :  "تسجيل دخول" , 
-"register" : "انشاء حساب",
-"AR" : "عربي",
-"EN" :"انجليزي"
-
+  "navbar": {
+    "Home": "الرئيسية",
+    "cart": "السله",
+    "products": "المنتجات",
+    "catigories": "تصنيفات",
+    "brands": "براندات",
+    "logout": "تسجيل خروج",
+    "login": "تسجيل دخول",
+    "register": "انشاء حساب",
+    "AR": "عربي",
+    "EN": "انجليزي"
+  },
+  "category": {
+    "Women's Fashion ": "ازياء نساء",
+    "Men's Fashion": "ازياء رجال" , 
+  "  Electronics"   : "اليكترونيات"
 }
-
-
-
 
 
 

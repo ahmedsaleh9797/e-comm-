@@ -1,11 +1,9 @@
-import { Component, inject, OnInit, signal, WritableSignal, input } from '@angular/core';
+import { Component, inject, input, OnInit, signal, WritableSignal } from '@angular/core';
 import { CategoryService } from '../../services/category/category.service';
-import { HomesliderComponent } from '../home/homeslider/homeslider.component';
-import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-categories',
-  imports: [HomesliderComponent, ],
+  imports: [],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss',
 })

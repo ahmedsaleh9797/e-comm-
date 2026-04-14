@@ -1,8 +1,6 @@
 
 
-export enum enviroment{
-baseUrl = "https://ecommerce.routemisr.com"
-
-
+export const enviroment = {
+baseUrl : "https://ecommerce.routemisr.com"
 
 }

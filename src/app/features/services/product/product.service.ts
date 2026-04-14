@@ -17,7 +17,7 @@ return this.httpClient.get<AllProductResponse>(`${enviroment.baseUrl}/api/v1/pro
 
 }
 
-getSpecificProduct(productId:string) :Observable<{data : product}>
+getSpecificProduct(productId:any) :Observable<{data : product}>
 
 {
 
