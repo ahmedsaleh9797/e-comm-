@@ -33,13 +33,7 @@ changeLang() {
   const currentLang = localStorage.getItem('lang') || 'en';
   const newLang = currentLang === 'en' ? 'ar' : 'en';
 
-  localStorage.setItem('lang', newLang); 
-
-  this.translateService.use(newLang); 
-
-  // document.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-  window.location.reload 
-  
+  this.myTranslateService.changeLang(newLang);
 }
 
 //   ngOnInit(): void {

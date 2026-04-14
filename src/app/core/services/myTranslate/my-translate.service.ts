@@ -12,25 +12,26 @@ export class MyTranslateService {
   private platformId = inject(PLATFORM_ID);
 
   initialize() {
-  let lang = 'en';
+    let lang = 'en';
 
-  if (isPlatformBrowser(this.platformId)) {
-    lang = localStorage.getItem('lang') || 'en';
+    if (isPlatformBrowser(this.platformId)) {
+      lang = localStorage.getItem('lang') || 'en';
+    }
+
+    this.translateService.setFallbackLang('en');
+
+    return this.loadTranslation(lang).pipe(
+      take(1),
+      tap(() => {
+        this.translateService.use(lang);
+
+        if (isPlatformBrowser(this.platformId)) {
+          document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+          document.documentElement.lang = lang;
+        }
+      })
+    );
   }
-
-  this.translateService.setFallbackLang('en');
-
-  return this.loadTranslation(lang).pipe(
-    take(1), // ✅ أهم سطر
-    tap(() => {
-      this.translateService.use(lang);
-
-      if (isPlatformBrowser(this.platformId)) {
-        document.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      }
-    })
-  );
-}
 
   loadTranslation(lang: string) {
     return this.http.get(`/assets/i18n/${lang}.json`).pipe(
@@ -39,4 +40,19 @@ export class MyTranslateService {
       })
     );
   }
+
+  changeLang(lang: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('lang', lang);
+    }
+    
+    this.loadTranslation(lang).pipe(take(1)).subscribe(() => {
+      this.translateService.use(lang);
+      if (isPlatformBrowser(this.platformId)) {
+        document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = lang;
+      }
+    });
+  }
 }
+

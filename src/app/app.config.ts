@@ -37,7 +37,7 @@ export const appConfig: ApplicationConfig = {
     provideEnvironmentInitializer(() => { }),
 
     provideTranslateService({
-      defaultLanguage: 'en'
+      fallbackLang: 'en'
     }),
 
   ]
