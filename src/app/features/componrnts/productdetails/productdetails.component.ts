@@ -1,53 +1,51 @@
-import { Component, inject, OnInit, signal, WritableSignal,input } from '@angular/core';
-import { ProductService } from '../../services/product/product.service';
+import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
+import { Component, inject, input, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CurrencyPipe, DatePipe, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+
+import { SvgIconComponent } from "angular-svg-icon";
 import { OnsalePipe } from '../../../shared/pipes/onsale/onsale-pipe';
 import { CartService } from '../../services/cart/cart.service';
-import { ToastrService } from 'ngx-toastr';
+import { ProductService } from '../../services/product/product.service';
 
 @Component({
   selector: 'app-productdetails',
-  imports: [CurrencyPipe,TitleCasePipe,DatePipe,OnsalePipe],
+  imports: [CurrencyPipe, TitleCasePipe, DatePipe, OnsalePipe, SvgIconComponent],
   templateUrl: './productdetails.component.html',
   styleUrl: './productdetails.component.scss',
 })
 export class ProductdetailsComponent implements OnInit {
   date = new Date()
-products:WritableSignal<product> = signal<product>({}as product);
-private productService :ProductService=inject(ProductService)
-private activatedRoute : ActivatedRoute = inject(ActivatedRoute)
- cartService = inject(CartService)
- toastr = inject(ToastrService);
- product = input<product>({} as product)
-ngOnInit(): void {
-  this.activatedRoute.params.subscribe((data)=>{
-console.log(data['id']);
+  products: WritableSignal<product> = signal<product>({} as product);
+  private productService: ProductService = inject(ProductService)
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute)
+  cartService = inject(CartService)
 
- this.getSpecificProduct(data['id']);
-  })
-  
- 
-}
+  product = input<product>({} as product)
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((data) => {
+      console.log(data['id']);
 
-getSpecificProduct(id:string){
+      this.getSpecificProduct(data['id']);
+    })
 
-this.productService.getSpecificProduct(id).subscribe((res)=>{
 
-this.products.set(res.data)
-console.log(this.products())
+  }
 
-});
-}
+  getSpecificProduct(id: string) {
 
-addProductToCart(productId:string){
+    this.productService.getSpecificProduct(id).subscribe((res) => {
 
- this.cartService.addProductToCart(productId).subscribe((res)=>{
- this.toastr.success(res.message,'',{
-timeOut:2000,
-progressBar:true
- });
-})
-}
+      this.products.set(res.data)
+      console.log(this.products())
+
+    });
+  }
+
+  addProductToCart(productId: string) {
+
+    this.cartService.addProductToCart(productId).subscribe((res) => {
+
+    })
+  }
 
 }

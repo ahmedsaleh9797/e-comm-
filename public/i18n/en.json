@@ -1,0 +1,24 @@
+{
+
+"navbar":{
+
+
+"Home" : "Home",
+"cart" : "cart",
+"products" : "products",
+"catigories" : "catigories",
+"brands" :  "brands" ,
+"logout" :   "logout" , 
+"login" :  "login" , 
+"register" : "register",
+"AR" : "AR",
+"EN" :"EN"
+
+}
+
+
+
+
+
+
+}

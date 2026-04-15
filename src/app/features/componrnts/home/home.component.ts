@@ -1,39 +1,22 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { HomesliderComponent } from './homeslider/homeslider.component';
-import { CategorysliderComponent } from '../../../shared/components/categoryslider/categoryslider.component';
-import { ProductService } from '../../services/product/product.service';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { FormsModule } from "@angular/forms";
+import { map } from 'rxjs';
 import { ProductcardComponent } from '../../../shared/components/productcard/productcard.component';
 import { SearchproductPipe } from '../../../shared/pipes/searchproduct/searchproduct-pipe';
-import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
-
+import { ProductService } from '../../services/product/product.service';
 @Component({
   selector: 'app-home',
-  imports: [HomesliderComponent, CategorysliderComponent, ProductcardComponent, SearchproductPipe, FormsModule],
+  imports: [ ProductcardComponent, SearchproductPipe, FormsModule, ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
     userSearch :string = '' ;
-productList:WritableSignal<product[]>=signal<product[]>([]);
-productService:ProductService=inject(ProductService);
-ngOnInit() : void {
-this.getAllProducts()
+    productService:ProductService=inject(ProductService);
+    productList = toSignal<any>(this.productService.getAllProducts().pipe(  map(res => res.data)))
 
 
-}
-getAllProducts() {
-
-this.productService.getAllProducts().subscribe((res)=>{
-this.productList.set(res.data)
-console.log(this.productList())
-
-
-
-})
-
-
-
-}
 
 
 

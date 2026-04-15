@@ -1,12 +1,11 @@
-import { LoginComponent } from './../../components/auth/login/login.component';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { forgetPasswordData, logInData, resetCodeData,  resetNewPasswordData,  signUpData,  } from '../../../shared/models/data';
-import { BehaviorSubject, Observable } from 'rxjs';
-import {  enviroment } from '../../../../enviroment/enviroment';
-import { jwtDecode, JwtPayload } from "jwt-decode";
-import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { forgetPasswordData, logInData, resetCodeData, resetNewPasswordData, signUpData, } from '@shared/models/data';
+import { jwtDecode, JwtPayload } from "jwt-decode";
+import { BehaviorSubject } from 'rxjs';
+import { enviroment } from '../../../../enviroment/enviroment';
 @Injectable({
   providedIn: 'root',
 })
@@ -30,15 +29,15 @@ this.decodeUserData();
 
 
   }
-signUp(data:signUpData):Observable<any>
+signUp(data:signUpData)
 {
-return this.httpClint.post(`${enviroment.baseUrl}/api/v1/auth/signup`,data)
+return this.httpClint.post<any>(`${enviroment.baseUrl}/api/v1/auth/signup`,data)
 
 
 }
-  logIn(data:logInData):Observable<any>
+  logIn(data:logInData)
 {
-return this.httpClint.post(`${enviroment.baseUrl}/api/v1/auth/signin`,data)
+return this.httpClint.post<any>(`${enviroment.baseUrl}/api/v1/auth/signin`,data)
 
 
 }
@@ -57,22 +56,22 @@ this.userdata.next(null);
 this.router.navigate(['login']);
 
 }
-forgetPassword(data:forgetPasswordData):Observable<any>
+forgetPassword(data:forgetPasswordData)
 {
 return this.httpClint.post(`${enviroment.baseUrl}/api/v1/auth/forgotPasswords`,data)
 
 
 
 }
-verifyResetCode(data:resetCodeData):Observable<any>{
+verifyResetCode(data:resetCodeData){
 
 return this.httpClint.post(`${enviroment.baseUrl}/api/v1/auth/verifyResetCode`,data)
 
 
 }
-resetNewPassword(data:resetNewPasswordData):Observable<any>{
+resetNewPassword(data:resetNewPasswordData){
 
-return this.httpClint.put(`${enviroment.baseUrl}/api/v1/auth/resetPassword`,data)
+return this.httpClint.put<any>(`${enviroment.baseUrl}/api/v1/auth/resetPassword`,data)
 
 
 }
