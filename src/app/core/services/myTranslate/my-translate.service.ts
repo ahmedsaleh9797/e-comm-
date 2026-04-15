@@ -34,7 +34,7 @@ export class MyTranslateService {
   }
 
   loadTranslation(lang: string) {
-    return this.http.get(`/assets/i18n/${lang}.json`).pipe(
+    return this.http.get(`/i18n/${lang}.json`).pipe(
       tap((res: any) => {
         this.translateService.setTranslation(lang, res);
       })

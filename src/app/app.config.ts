@@ -29,7 +29,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch(), withInterceptors([setHeaderInterceptor, errorInterceptor])),
 
-    provideAppInitializer(() => { inject(MyTranslateService); }),
+    provideAppInitializer(() => inject(MyTranslateService).initialize()),
 
     provideEnvironmentInitializer(() => { }),
 
@@ -37,7 +37,7 @@ export const appConfig: ApplicationConfig = {
       defaultLanguage: 'en'
     }),
     provideTranslateHttpLoader({
-      prefix: '/assets/i18n/',
+      prefix: '/i18n/',
       suffix: '.json'
     }),
 
